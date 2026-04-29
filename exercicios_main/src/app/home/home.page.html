@@ -1,20 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title style="text-align: center;">
+      Exercícios Ionic - Ion Range
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="ex1">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-alert trigger="ex1" header="Resultado:" message="{{msn_ex1}}" [buttons]="alertButtons"></ion-alert>
+
+    <h1 style="text-align: center; font-size: 1.5rem;">Exercício 1</h1>
+    <ion-input style="max-width: 200px;"  type="number" label="Digite o valor da conta" labelPlacement="floating" placeholder="Apenas números" [(ngModel)]="conta"></ion-input>
+    <ion-item-divider style="max-width: 650px;"></ion-item-divider>
+
+    <p>Ajuste a porcentagem de gorjeta</p>
+    <ion-range (ionChange)="onIonChange($event)" [ticks]="true" [snaps]="true" [min]="0" [max]="30" labelPlacement="end" style="max-width: 500px; padding-left: 10px;" label="{{valorRange}}%" [(ngModel)]="valorRange"></ion-range>
+    <ion-button id="ex1" expand="block" style="max-width: 200px;" (click)="Calcular_Gorjeta()">Calcular</ion-button>
   </div>
 </ion-content>
