@@ -13,10 +13,16 @@
 
     <h1 style="text-align: center; font-size: 1.5rem;">Exercício 1</h1>
     <ion-input style="max-width: 200px;"  type="number" label="Digite o valor da conta" labelPlacement="floating" placeholder="Apenas números" [(ngModel)]="conta"></ion-input>
-    <ion-item-divider style="max-width: 650px;"></ion-item-divider>
-
-    <p>Ajuste a porcentagem de gorjeta</p>
-    <ion-range (ionChange)="onIonChange($event)" [ticks]="true" [snaps]="true" [min]="0" [max]="30" labelPlacement="end" style="max-width: 500px; padding-left: 10px;" label="{{valorRange}}%" [(ngModel)]="valorRange"></ion-range>
+    <p>Ajuste a porcentagem da gorjeta:</p>
+    <ion-range (ionChange)="ex1($event)" [ticks]="true" [snaps]="true" [min]="0" [max]="30" labelPlacement="end" style="max-width: 500px; padding-left: 10px;" label="{{Range_1}}%" [(ngModel)]="Range_1"></ion-range>
     <ion-button id="ex1" expand="block" style="max-width: 200px;" (click)="Calcular_Gorjeta()">Calcular</ion-button>
   </div>
+
+  <ion-item-divider></ion-item-divider>
+  <div class="ex2">
+    <h1 style="text-align: center; font-size: 1.5rem;">Exercício 2</h1>
+    <p>Ajuste o valor que deseja calcular (1 até 5000)</p>
+    <ion-range (ionChange)="ex2($event)" [ticks]="true" [snaps]="true" [min]="1" [max]="5000" labelPlacement="end" style="max-width: 500px; padding-left: 10px;" label="{{Range_2}}" [(ngModel)]="Range_2"></ion-range>
+  </div>
+
 </ion-content>

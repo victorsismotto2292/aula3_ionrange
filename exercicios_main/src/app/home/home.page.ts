@@ -9,14 +9,18 @@ import { RangeCustomEvent } from '@ionic/angular';
 })
 export class HomePage {
 
-  msn_ex1: string = '';
+  msn_ex1: string = ''; // MENSAGEM EXERCÍCIO 1
+  msn_ex2: string = ''; // MENSAGEM EXERCÍCIO 2
   constructor() {}
   alertButtons = ['OK'];
-  conta: string = '';
-  valorRange = 0;
 
-  onIonChange(event:RangeCustomEvent){
-    this.valorRange = parseInt(event.detail.value.toString());
+  // EXERCÍCIO 1:
+
+  conta: string = '';
+  Range_1 = 0;
+
+  ex1(event:RangeCustomEvent){
+    this.Range_1 = parseInt(event.detail.value.toString());
   }
 
   Calcular_Gorjeta(){
@@ -26,12 +30,19 @@ export class HomePage {
       return;
     }
     else{
-      const range = this.valorRange;
+      const range = this.Range_1;
       const total = valorConta * (1+range/100);
       const gorjeta = total - valorConta;
 
       this.msn_ex1 = `Valor total: ${total.toFixed(2)} | Gorjeta: ${gorjeta.toFixed(2)}`;
     }
+  }
+
+  // EXERCÍCIO 2:
+
+  Range_2 = 0;
+  ex2(event:RangeCustomEvent){
+    this.Range_2 = parseInt(event.detail.value.toString());
   }
 
 }
