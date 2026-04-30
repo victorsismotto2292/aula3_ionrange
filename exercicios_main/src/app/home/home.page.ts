@@ -40,9 +40,45 @@ export class HomePage {
 
   // EXERCÍCIO 2:
 
-  Range_2 = 0;
-  ex2(event:RangeCustomEvent){
-    this.Range_2 = parseInt(event.detail.value.toString());
+  Range_2 = 1;
+  Range_2_res = 0;
+
+  medida1: string = '';
+  medida2: string = '';
+
+  // Mapas de conversão:
+  paraMetro: any = {
+    km: 1000,
+    hm: 100,
+    dam: 10,
+    m: 1,
+    dm: 0.1,
+    cm: 0.01,
+    mm: 0.001
+  };
+
+  deMetro: any = {
+    miles: 1 / 1609.34,
+    ft: 3.28084,
+    in: 39.3701,
+  };
+
+  ex2(event: RangeCustomEvent) {
+    this.Range_2 = Number(event.detail.value);
+    this.calcularConversao();
   }
+
+  calcularConversao() {
+    if (!this.medida1 || !this.medida2) {
+      this.Range_2_res = 0;
+      return;
+    }
+
+    const valorEmMetros = this.Range_2 * this.paraMetro[this.medida1]; // CALCULAR TUDO PRA METRO
+    const resultado = valorEmMetros * this.deMetro[this.medida2];
+
+    this.Range_2_res = Number(resultado.toFixed(5));
+  }
+
 
 }
