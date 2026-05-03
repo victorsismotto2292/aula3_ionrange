@@ -54,7 +54,20 @@
   <ion-item-divider></ion-item-divider>
 
   <div class="ex3">
+    <ion-alert trigger="ex3" header="Resultado:" message="{{msn_ex3}}" [buttons]="alertButtons"></ion-alert>
+
     <h1 style="text-align: center; font-size: 1.5rem;">Exercício 3</h1>
+    <p>Ajuste o valor do seu peso (20 a 150kg)</p>
+    <ion-range (ionChange)="ex3peso($event)" [ticks]="true" [snaps]="true" [min]="20" [max]="150" labelPlacement="end" style="max-width: 500px; padding-left: 10px;" label="{{Range_kg}}" [(ngModel)]="Range_kg"></ion-range>
+    <ion-label>VALOR EM LIBRAS: <strong>{{kg_libras}}lb</strong></ion-label>
+
+    <ion-item-divider></ion-item-divider>
+
+    <p>Ajuste sua altura (100cm a 300cm)</p>
+    <ion-range (ionChange)="ex3altura($event)" [ticks]="true" [snaps]="true" [min]="100" [max]="300" labelPlacement="end" style="max-width: 500px; padding-left: 10px;" label="{{Range_altura}}" [(ngModel)]="Range_altura"></ion-range>
+    <ion-label>VALOR EM METROS: <strong>{{cm_metros}}m</strong></ion-label><br><br>
+
+    <ion-button id="ex3" expand="block" style="max-width: 200px;" (click)="IMC()">Calcular IMC</ion-button>
   </div>
 
 </ion-content>

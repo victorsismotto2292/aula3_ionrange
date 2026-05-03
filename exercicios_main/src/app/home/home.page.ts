@@ -10,7 +10,7 @@ import { RangeCustomEvent } from '@ionic/angular';
 export class HomePage {
 
   msn_ex1: string = ''; // MENSAGEM EXERCÍCIO 1
-  msn_ex2: string = ''; // MENSAGEM EXERCÍCIO 2
+  msn_ex3: string = ''; // MENSAGEM EXERCÍCIO 3
   constructor() {}
   alertButtons = ['OK'];
 
@@ -80,5 +80,58 @@ export class HomePage {
     this.Range_2_res = Number(resultado.toFixed(5));
   }
 
+  // EXERCÍCIO 3:
 
+  Range_kg = 20; // MÍNIMO
+  Range_altura = 100; // MÍNIMO
+  kg_libras: any = '';
+  cm_metros: any = '';
+  lb = 2.205;
+  m = 100;
+
+  kg_lb(){
+    const libras = this.Range_kg * this.lb;
+    this.kg_libras = Number(libras.toFixed(2));
+  }
+
+  cm_m(){
+    const metros = this.Range_altura / this.m;
+    this.cm_metros = Number(metros.toFixed(2));
+  }
+
+  ex3peso(event: RangeCustomEvent){
+    this.Range_kg = Number(event.detail.value);
+    this.kg_lb(); // EXECUTAR A FUNÇÃO DO CÁLCULO DO IMC + CONVERSOR  
+  }
+
+  ex3altura(event: RangeCustomEvent){
+    this.Range_altura = Number(event.detail.value);
+    this.cm_m();
+  }
+
+  IMC(){
+    let valor: string = '';
+    const IMC = this.Range_kg / (this.Range_altura/100)**2;
+
+    if(IMC < 20){
+      valor = 'Magreza (abaixo do peso)';
+    }
+    else if(IMC >= 20 && IMC <= 25){
+      valor = 'Peso ideal (saudável)';
+    }
+    else if(IMC > 25 && IMC <= 30){
+      valor = 'Sobrepeso (pré-obesidade)';
+    }
+    else if(IMC > 30 && IMC <= 35){
+      valor = 'Obesidade Grau I'
+    }
+    else if(IMC > 35 && IMC <= 40){
+      valor = 'Obesidade Grau II (severa)'
+    }
+    else{
+      valor = 'Obesidade Grau III (grave)'
+    }
+
+    this.msn_ex3 = `IMC: ${IMC.toFixed(2)} -> ` + valor;
+  }
 }
